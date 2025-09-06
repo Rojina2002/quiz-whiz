@@ -1,68 +1,146 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* QuizWhiz Design System - Vibrant, Game-like Trivia Experience */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* Base colors */
+    --background: 240 20% 99%;
+    --foreground: 240 20% 15%;
+
+    /* Card system */
+    --card: 0 0% 100%;
+    --card-foreground: 240 20% 15%;
+
+    /* Popover system */
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 20% 15%;
+
+    /* Primary - Vibrant Purple */
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 262 83% 52%;
+
+    /* Secondary - Electric Blue */
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 217 91% 54%;
+
+    /* Muted system */
+    --muted: 240 20% 96%;
+    --muted-foreground: 240 15% 46%;
+
+    /* Accent - Bright Cyan */
+    --accent: 187 85% 53%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Success - Emerald */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning - Amber */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Destructive - Red */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border and input */
+    --border: 240 20% 90%;
+    --input: 240 20% 90%;
+    --ring: 262 83% 58%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(217 91% 60%));
+    --gradient-secondary: linear-gradient(135deg, hsl(217 91% 60%), hsl(187 85% 53%));
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 55%));
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(262 83% 58% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(262 83% 58% / 0.1), 0 2px 4px -1px hsl(262 83% 58% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(262 83% 58% / 0.1), 0 4px 6px -2px hsl(262 83% 58% / 0.05);
+    --shadow-glow: 0 0 20px hsl(262 83% 58% / 0.3);
+
+    --radius: 0.75rem;
   }
-  a:hover {
-    color: #747bff;
+
+  .dark {
+    /* Base colors */
+    --background: 240 20% 8%;
+    --foreground: 240 20% 95%;
+
+    /* Card system */
+    --card: 240 20% 10%;
+    --card-foreground: 240 20% 95%;
+
+    /* Popover system */
+    --popover: 240 20% 10%;
+    --popover-foreground: 240 20% 95%;
+
+    /* Primary - Vibrant Purple (darker) */
+    --primary: 262 83% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 262 83% 58%;
+
+    /* Secondary - Electric Blue (darker) */
+    --secondary: 217 91% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 217 91% 60%;
+
+    /* Muted system */
+    --muted: 240 20% 15%;
+    --muted-foreground: 240 15% 65%;
+
+    /* Accent - Bright Cyan (darker) */
+    --accent: 187 85% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Success - Emerald (darker) */
+    --success: 142 71% 50%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning - Amber (darker) */
+    --warning: 38 92% 55%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Destructive - Red (darker) */
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border and input */
+    --border: 240 20% 20%;
+    --input: 240 20% 20%;
+    --ring: 262 83% 65%;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-success {
+    background: var(--gradient-success);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
   }
 }
